@@ -1,0 +1,49 @@
+flowchart TD
+    subgraph Client
+        A1[Website Button or Link]
+        A2[Customer UI - Booking Middleware]
+    end
+
+    subgraph Frontend
+        A3[Next.js or Angular UI]
+        A4[Auth Handling - Supabase or Auth.js]
+    end
+
+    subgraph Middleware_API_Layer
+        B1[API Layer - Next.js Routes or NestJS]
+        B2[Stripe Integration]
+        B3[Supabase Queries and PostgreSQL]
+        B4[Calendar API Connectors]
+        B5[Email and SMS Notification System]
+    end
+
+    subgraph Backend_Services
+        C1[Stripe SetupIntent and Webhooks]
+        C2[PostgreSQL Database]
+        C3[Queue - BullMQ or RabbitMQ]
+        C4[Redis Cache]
+        C5[Optional AI Service - FastAPI NLP]
+    end
+
+    subgraph DevOps_and_Monitoring
+        D1[GitLab CI/CD]
+        D2[Docker Containers]
+        D3[Grafana, Prometheus, Sentry]
+    end
+
+    A1 --> A2
+    A2 --> A3
+    A3 --> B1
+    A4 --> B1
+    B1 --> B2
+    B1 --> B3
+    B1 --> B4
+    B1 --> B5
+    B2 --> C1
+    B3 --> C2
+    B5 --> C3
+    C3 --> C4
+    C1 --> C2
+    C5 --> B1
+    D1 --> D2 --> B1
+    D3 --> B1

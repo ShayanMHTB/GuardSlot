@@ -1,0 +1,1 @@
+// types/booking.ts
